@@ -47,8 +47,8 @@ $(document).ready(function(){
 $("#parroquia").change(function () {
 $("#parroquia option:selected").each(function () {
 idparroquia = $(this).val();
-$.post("bodegas.php", { idparroquia:idparroquia }, function(data){
-$("#bodega").html(data);
+$.post("sector.php", { idparroquia:idparroquia }, function(data){
+$("#sector").html(data);
 });
 window.console&&console.log(idparroquia);
 });
@@ -131,6 +131,9 @@ window.console&&console.log(idparroquia);
 	
 	
 	<select name="parroquia" id="parroquia" style="width:280px;height:34px">
+	</select>
+
+		<select name="parroquia" id="sector" style="width:280px;height:34px">
 	</select>
 </div>
 
