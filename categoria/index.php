@@ -3,26 +3,12 @@ require_once '../vendor/autoload.php';
 ini_set('display_errors', 1);
 use DB\Eloquent;
 use Models\Bodega;
-use Models\Cargo;
-use Models\Clap;
-use Models\Clp;
-use Models\ClpResponsable;
-use Models\Consulta;
-use Models\ConsultaContacto;
-use Models\Familia;
-use Models\Integrante;
-use Models\Jefe;
-use Models\Municipio;
-use Models\Organismo;
-use Models\Parroquia;
-use Models\Problematica;
-use Strana\Paginator;
-use Models\Rubro;
+use Models\Categoria;
 new Eloquent();
 session_start();
 extract($_GET);
 extract($_POST);
-$rubros = Rubro::where('eliminar',0)->get();
+$Categoria = Categoria::where('eliminar',0)->get();
 ?>
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/css/beyond.min.css">
@@ -33,8 +19,8 @@ $rubros = Rubro::where('eliminar',0)->get();
 <script src="../assets/js/beyond.js"></script>
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
-	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> RUBROS</strong></span>
-	<button class="btn btn-danger shiny" data-toggle="modal" data-target="#agregarRubro"><i class="fa fa-plus"></i> AGREGAR RUBRO</button>
+	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> Categoria</strong></span>
+	<button class="btn btn-danger shiny" data-toggle="modal" data-target="#agregarCategoria"><i class="fa fa-plus"></i> AGREGAR CATEGORIA</button>
 </div>
 <div class="widget-body bordered-left">
 	<table class="table  table-hover table-bordered" id="simpledatatable" style="font-size: 1em;color: #555;">
@@ -47,37 +33,35 @@ $rubros = Rubro::where('eliminar',0)->get();
 			</tr>
 		</thead>
 		<tbody>
-			<?php
-			$stran = new Paginator();
-			$records = array_reduce((array) $rubros, 'array_merge', array());
-			$paginator = $strana->perPage(4)->make($records);
-			?>
-			<?php foreach ($paginator as $key => $p): ?>
+
+			<?php foreach ($Categoria as $key => $p): ?>
 			<tr>
 				<td width='20%' >
-					<?php echo $p->rubro ?>
+					<?php echo $p->categoria ?>
 				</td>
 				<td width='10%' >
-					<?php echo $p->cantidad ?>
+					<?php echo $p->id ?>
 				</td>
 				<td>
 					<div class="col-md-12">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<!-- Trigger the modal with a button -->
-							<button type="button" class="btn btn-info fa fa-pencil" data-toggle="modal" data-target="#editarRubro<?php echo $p->id ?>"></button>
+							<button type="button" class="btn btn-info fa fa-pencil" data-toggle="modal" data-target="#editarCategoria<?php echo $p->id ?>"></button>
+
 							<!-- Modal -->
-							<div id="editarRubro<?php echo $p->id ?>" class="modal fade" role="dialog">
+							<div id="editarCategoria<?php echo $p->id ?>" class="modal fade" role="dialog">
 								<div class="modal-dialog">
 									<!-- Modal content-->
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">ACTUALIZAR RUBRO</h4>
+											<h4 class="modal-title">ACTUALIZAR CATEGORIA</h4>
 										</div>
 										<div class="modal-body">
 											<form action="update.php" method="POST">
 												<div class="form-group">
-													<input type="text" class="form-control" placeholder="Tipo de Rubro" name='tipo' required="required" value="<?php echo $p->rubro ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+													<input type="text" class="form-control" placeholder="Tipo de Categoria" name='nombre_categoria' required="required" value="<?php echo $p->categoria ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+													<input type="hidden" name="id" value="<?php echo $p->id ?>">
 												</div>
 												
 											</div>
@@ -90,7 +74,10 @@ $rubros = Rubro::where('eliminar',0)->get();
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
+							<a class="btn btn-info fa fa-search" href="show.php?id=<?php echo $p->id ?>"></a>
+						</div>
+						<div class="col-md-4">
 							<form action="delete.php" method="POST">
 								<input type="hidden" name="id" value="<?php echo $p->id ?>">
 								<button class="btn btn-danger fa fa-times" type="submit"></button>
@@ -107,18 +94,18 @@ $rubros = Rubro::where('eliminar',0)->get();
 </div>
 </div>
 <!-- Modal -->
-<div id="agregarRubro" class="modal fade" role="dialog">
+<div id="agregarCategoria" class="modal fade" role="dialog">
 <div class="modal-dialog">
 <!-- Modal content-->
 <div class="modal-content">
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	<h4 class="modal-title">AGREGAR RUBRO</h4>
+	<h4 class="modal-title">AGREGAR CATEGORIA</h4>
 </div>
 <div class="modal-body">
 	<form action="store.php" method="POST">
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Tipo de Rubro" name='tipo' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+			<input type="text" class="form-control" placeholder="Tipo de Categoria" name='nombre_categoria' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
 		</div>
 		
 	</div>
