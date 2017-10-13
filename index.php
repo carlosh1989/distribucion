@@ -72,7 +72,7 @@ window.console&&console.log(idsector);
 
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
-	<span class="widget-caption"><strong> DISTRIBUCIÓN GMAS</strong></span>
+	<span class="widget-caption"><strong> DISTRIBUCIÓN GMAS ..</strong></span>
 	<a class="btn btn-danger shiny" href="rubros"><i class="fa fa-braille"></i>RUBROS</a>
 	<a class="btn btn-danger shiny" href="productos"><i class="fa fa-cutlery"></i>PRODUCTOS</a>
 	<button class="btn btn-danger shiny" href="combos"><i class="fa fa-shopping-basket"></i>COMBOS</button>
