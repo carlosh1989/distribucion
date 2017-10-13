@@ -47,7 +47,7 @@ $(document).ready(function(){
 $("#parroquia").change(function () {
 $("#parroquia option:selected").each(function () {
 idparroquia = $(this).val();
-$.post("sector.php", { idparroquia:idparroquia }, function(data){
+$.post("select/sector.php", { idparroquia:idparroquia }, function(data){
 $("#sector").html(data);
 });
 window.console&&console.log(idparroquia);
@@ -55,58 +55,21 @@ window.console&&console.log(idparroquia);
 })
 });
 </script>
+
 <script language="javascript">
 $(document).ready(function(){
-$("#municipioB").change(function () {
-$("#municipioB option:selected").each(function () {
-idmunicipio = $(this).val();
-$.post("parroquias.php", { idmunicipio:idmunicipio }, function(data){
-$("#parroquiaB").html(data);
+$("#sector").change(function () {
+$("#sector option:selected").each(function () {
+idsector = $(this).val();
+$.post("select/subsector.php", { idsector:idsector }, function(data){
+$("#subsector").html(data);
 });
-window.console&&console.log(idmunicipio);
+window.console&&console.log(idsector);
 });
 })
 });
 </script>
-<script language="javascript">
-$(document).ready(function(){
-$("#parroquiaB").change(function () {
-$("#parroquiaB option:selected").each(function () {
-idparroquia = $(this).val();
-$.post("bodegas.php", { idparroquia:idparroquia }, function(data){
-$("#bodegaB").html(data);
-});
-window.console&&console.log(idparroquia);
-});
-})
-});
-</script>
-<script language="javascript">
-$(document).ready(function(){
-$("#municipioC").change(function () {
-$("#municipioC option:selected").each(function () {
-idmunicipio = $(this).val();
-$.post("parroquias.php", { idmunicipio:idmunicipio }, function(data){
-$("#parroquiaC").html(data);
-});
-window.console&&console.log(idmunicipio);
-});
-})
-});
-</script>
-<script language="javascript">
-$(document).ready(function(){
-$("#parroquiaC").change(function () {
-$("#parroquiaC option:selected").each(function () {
-idparroquia = $(this).val();
-$.post("claps.php", { idparroquia:idparroquia }, function(data){
-$("#clapC").html(data);
-});
-window.console&&console.log(idparroquia);
-});
-})
-});
-</script>
+
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
 	<span class="widget-caption"><strong> DISTRIBUCIÓN</strong></span>
@@ -133,10 +96,13 @@ window.console&&console.log(idparroquia);
 	<select name="parroquia" id="parroquia" style="width:280px;height:34px">
 	</select>
 
-		<select name="parroquia" id="sector" style="width:280px;height:34px">
+	<select name="sector" id="sector" style="width:280px;height:34px">
 	</select>
-</div>
 
+	<select name="subsector" id="subsector" style="width:280px;height:34px">
+	</select>
+
+</div>
 </div>
 </div>
 </div>
