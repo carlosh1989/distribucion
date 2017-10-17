@@ -44,8 +44,10 @@ $rubro = Rubro::where('eliminar',0)->where('id',$id)->first();
 			<tr role="row">
 				<th width='20%'><i class="fa fa-file"></i> TIPO</th>
 				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
+				CATEGORÍA</th>
+				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
 				CANTIDAD</th>
-				<th width='5%'><i class="fa fa-gear"></i> Opciones</th>
+				<th width='5%'><i class="fa fa-gear"></i> OPCIONES</th>
 			</tr>
 		</thead>
 		<tbody>

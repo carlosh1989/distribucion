@@ -43,8 +43,10 @@ $rubros = Rubro::where('eliminar',0)->get();
 			<tr role="row">
 				<th width='20%'><i class="fa fa-file"></i> TIPO</th>
 				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
+				CATEGORÍA</th>
+				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
 				CANTIDAD</th>
-				<th width='5%'><i class="fa fa-gear"></i> Opciones</th>
+				<th width='5%'><i class="fa fa-gear"></i> OPCIONES</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -57,6 +59,9 @@ $rubros = Rubro::where('eliminar',0)->get();
 			<tr>
 				<td width='20%' >
 					<?php echo $p->rubro ?>
+				</td>
+				<td width='10%' >
+					<?php echo $p->categoria->categoria ?>
 				</td>
 				<td width='10%' >
 					<?php echo $p->cantidad ?>
