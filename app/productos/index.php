@@ -94,6 +94,20 @@ $productos = Producto::where('eliminar',0)->get();
 </div>
 </div>
 </div>
+<!-- Select Categoria -->
+<script language="javascript">
+$(document).ready(function(){
+$("#categoria").change(function () {
+$("#categoria option:selected").each(function () {
+idcategoria = $(this).val();
+$.post("../../select/rubros.php", { idcategoria:idcategoria }, function(data){
+$("#rubros").html(data);
+});
+window.console&&console.log(idcategoria);
+});
+})
+});
+</script>
 <!-- Modal -->
 <div id="agregarRubro" class="modal fade" role="dialog">
 <div class="modal-dialog">
@@ -103,17 +117,54 @@ $productos = Producto::where('eliminar',0)->get();
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
 	<h4 class="modal-title">AGREGAR PRODUCTO</h4>
 </div>
-<div class="modal-body">
-	<form action="store.php" method="POST">
+<form action="store.php" method="POST">
+	<div class="modal-body">
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Tipo de Producto" name='nombre' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
-		</div>
-		
+			<?php $categorias = Categoria::all(); ?>
+			<select name="categoria" id="categoria" style="width:280px;height:34px">
+				<option value="">CATEGORIA</option>
+			<optgroup label='-------'></optgroup>
+			<?php foreach ($categorias as $cat): ?>
+			<option value="<?php echo $cat->id ?>"><?php echo $cat->categoria ?></option>
+			<?php endforeach ?>
+		</select>
+		<select
+			name="rubro" id="rubros" style="width:280px;height:34px">
+			<option value="">RUBRO</option>
+		</select>
 	</div>
-	<div class="modal-footer">
-		<button type="submit" class="btn btn-danger shiny"><i class="fa fa-save"></i> GUARDAR</button>
-		<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	<div class="form-group">
+		<select style="width:280px;height:34px">
+			<option value="">TIPO</option>
+			<option value="1">Regulado</option>
+			<option value="2">No Regulado</option>
+		</select>
 	</div>
+
+	<div class="form-group">
+		<select style="width:280px;height:34px">
+			<option value="">PRESENTACIÒN +</option>
+			<option value="1">Regulado</option>
+			<option value="2">No Regulado</option>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<select style="width:280px;height:34px">
+			<option value="">PRESENTACION -</option>
+			<option value="1">Regulado</option>
+			<option value="2">No Regulado</option>
+		</select>
+	</div>
+	<div>
+		<input type="text" class="form-control" name='nombre' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+	</div>
+	
+</div>
+<div class="modal-footer">
+	<button type="submit" class="btn btn-danger shiny"><i class="fa fa-save"></i> GUARDAR</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+</div>
 </form>
 </div>
 </div>
