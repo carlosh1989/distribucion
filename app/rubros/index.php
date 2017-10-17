@@ -34,7 +34,7 @@ $rubros = Rubro::where('eliminar',0)->get();
 <script src="../../assets/js/beyond.js"></script>
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
-	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> RUBROS</strong></span>
+	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> RUBROS:</strong></span>
 	<button class="btn btn-danger shiny" data-toggle="modal" data-target="#agregarRubro"><i class="fa fa-plus"></i> AGREGAR RUBRO</button>
 </div>
 <div class="widget-body bordered-left">
@@ -43,8 +43,10 @@ $rubros = Rubro::where('eliminar',0)->get();
 			<tr role="row">
 				<th width='20%'><i class="fa fa-file"></i> TIPO</th>
 				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
+				CATEGORÍA</th>
+				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
 				CANTIDAD</th>
-				<th width='5%'><i class="fa fa-gear"></i> Opciones</th>
+				<th width='5%'><i class="fa fa-gear"></i> OPCIONES</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -57,6 +59,9 @@ $rubros = Rubro::where('eliminar',0)->get();
 			<tr>
 				<td width='20%' >
 					<?php echo $p->rubro ?>
+				</td>
+				<td width='10%' >
+					<?php echo $p->categoria->categoria ?>
 				</td>
 				<td width='10%' >
 					<?php echo $p->cantidad ?>
