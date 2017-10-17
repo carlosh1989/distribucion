@@ -1,2 +1,2 @@
 /vendor/
-/db/config-eloquent.php
+db/config-eloquent.php
