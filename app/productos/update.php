@@ -2,28 +2,22 @@
 require_once '../../vendor/autoload.php';
 ini_set('display_errors', 1);
 use DB\Eloquent;
-use Models\Bodega;
-use Models\Cargo;
-use Models\Clap;
-use Models\Clp;
-use Models\ClpResponsable;
-use Models\Consulta;
-use Models\ConsultaContacto;
-use Models\Familia;
-use Models\Integrante;
-use Models\Jefe;
-use Models\Municipio;
-use Models\Parroquia;
-use Models\Problematica;
+use Strana\Paginator;
+use Models\Categoria;
+use Models\Producto;
 use Models\Rubro;
 new Eloquent();
 session_start();
 extract($_GET);
 extract($_POST);
 
-$rubro = Rubro::find($id);
-$rubro->rubro = $tipo;
-$rubro->save();
+$productos = Producto::find($id);
+$productos->origen_id = $origen;
+$productos->rubro_id = $rubro;
+$productos->presentacion_id = 0;
+$productos->coste_id = $coste;
+$productos->nombre = $nombre;
+$productos->save();
 
 header("Location: index.php");
 die();
