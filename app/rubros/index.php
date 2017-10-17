@@ -1,5 +1,5 @@
 <?php
-require_once '../vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 ini_set('display_errors', 1);
 use DB\Eloquent;
 use Models\Bodega;
@@ -18,19 +18,20 @@ use Models\Parroquia;
 use Models\Problematica;
 use Strana\Paginator;
 use Models\Rubro;
+use Models\Categoria;
 new Eloquent();
 session_start();
 extract($_GET);
 extract($_POST);
 $rubros = Rubro::where('eliminar',0)->get();
 ?>
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/beyond.min.css">
-<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-<link rel="stylesheet" href="../assets/bower/trumbowyg/dist/ui/trumbowyg.min.css">
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/beyond.js"></script>
+<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../assets/css/beyond.min.css">
+<link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../assets/bower/trumbowyg/dist/ui/trumbowyg.min.css">
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/beyond.js"></script>
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
 	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> RUBROS</strong></span>
@@ -48,7 +49,7 @@ $rubros = Rubro::where('eliminar',0)->get();
 		</thead>
 		<tbody>
 			<?php
-			$stran = new Paginator();
+			$strana = new Paginator();
 			$records = array_reduce((array) $rubros, 'array_merge', array());
 			$paginator = $strana->perPage(4)->make($records);
 			?>
@@ -118,6 +119,19 @@ $rubros = Rubro::where('eliminar',0)->get();
 <div class="modal-body">
 	<form action="store.php" method="POST">
 		<div class="form-group">
+			<select class="form-group" name="categoria" id="">
+				<option value="">Categorías</option>
+				<?php 
+				$categorias = Categoria::all();
+				?>
+
+				<?php foreach ($categorias as $key => $c): ?>
+					<option value="<?php echo $c->id ?>"><?php echo $c->categoria ?></option>
+				<?php endforeach ?>
+			</select>
+		</div>
+		
+		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Tipo de Rubro" name='tipo' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
 		</div>
 		
@@ -130,7 +144,7 @@ $rubros = Rubro::where('eliminar',0)->get();
 </div>
 </div>
 </div>
-<script src="../assets/bower/trumbowyg/dist/trumbowyg.min.js"></script>
+<script src="../../assets/bower/trumbowyg/dist/trumbowyg.min.js"></script>
 <script>
 /** Default editor configuration **/
 $('.editor').trumbowyg();

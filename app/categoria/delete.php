@@ -1,5 +1,5 @@
 <?php
-require_once '../vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 ini_set('display_errors', 1);
 use DB\Eloquent;
 use Models\Categoria;
@@ -9,7 +9,7 @@ extract($_GET);
 extract($_POST);
 
 $categoria = Categoria::find($id);
-$categoria->categoria = $nombre_categoria;
+$categoria->eliminar = 1;
 $categoria->save();
 
 header("Location: index.php");

@@ -1,5 +1,5 @@
 <?php
-require_once '../vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 ini_set('display_errors', 1);
 use DB\Eloquent;
 use Models\Bodega;
@@ -21,11 +21,14 @@ session_start();
 extract($_GET);
 extract($_POST);
 
+
+var_dump($_POST);
 $rubro = new Rubro;
+$rubro->distribucion_categoria_id = $categoria;
 $rubro->rubro = $tipo;
 $rubro->cantidad = 0;
 $rubro->eliminar = 0;
-$rubro->save();
+//$rubro->save();
 
 header("Location: index.php");
 die();

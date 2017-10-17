@@ -1,5 +1,5 @@
 <?php
-require_once '../vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 ini_set('display_errors', 1);
 use DB\Eloquent;
 use Models\Bodega;
@@ -25,13 +25,14 @@ extract($_POST);
 
 $rubro = Rubro::where('eliminar',0)->where('id',$id)->first();
 ?>
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="../assets/css/beyond.min.css">
-<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-<link rel="stylesheet" href="../assets/bower/trumbowyg/dist/ui/trumbowyg.min.css">
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/beyond.js"></script>
+<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../assets/css/beyond.min.css">
+<link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../assets/bower/trumbowyg/dist/ui/trumbowyg.min.css">
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/beyond.js"></script>
+
 
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
@@ -101,7 +102,7 @@ $rubro = Rubro::where('eliminar',0)->where('id',$id)->first();
 </div>
 </div>
 
-<script src="../assets/bower/trumbowyg/dist/trumbowyg.min.js"></script>
+<script src="../../assets/bower/trumbowyg/dist/trumbowyg.min.js"></script>
 <script>
 /** Default editor configuration **/
 $('.editor').trumbowyg();
