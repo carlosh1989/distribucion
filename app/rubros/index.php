@@ -84,6 +84,7 @@ $rubros = Rubro::where('eliminar',0)->get();
 											<form action="update.php" method="POST">
 												<div class="form-group">
 													<input type="text" class="form-control" placeholder="Tipo de Rubro" name='tipo' required="required" value="<?php echo $p->rubro ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+													<input type="hidden" name="id" value="<?php echo $p->id ?>">
 												</div>
 												
 											</div>
