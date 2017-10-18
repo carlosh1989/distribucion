@@ -251,6 +251,7 @@ return array(
     'Models\\Parroquia' => $baseDir . '/db/models/Parroquia.php',
     'Models\\Poblacion' => $baseDir . '/db/models/Poblacion.php',
     'Models\\Problematica' => $baseDir . '/db/models/Problematica.php',
+    'Models\\Producto' => $baseDir . '/db/models/Producto.php',
     'Models\\Rubro' => $baseDir . '/db/models/Rubro.php',
     'Models\\Sector' => $baseDir . '/db/models/Sector.php',
     'Models\\Sectorviejo' => $baseDir . '/db/models/Sectorviejo.php',
