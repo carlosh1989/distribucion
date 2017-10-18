@@ -180,75 +180,6 @@
         ]
     },
     {
-        "name": "doctrine/inflector",
-        "version": "v1.2.0",
-        "version_normalized": "1.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/inflector.git",
-            "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/inflector/zipball/e11d84c6e018beedd929cff5220969a3c6d1d462",
-            "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^6.2"
-        },
-        "time": "2017-07-22T12:18:28+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com"
-            },
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com"
-            }
-        ],
-        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "inflection",
-            "pluralize",
-            "singularize",
-            "string"
-        ]
-    },
-    {
         "name": "illuminate/contracts",
         "version": "v5.1.41",
         "version_normalized": "5.1.41.0",
@@ -505,57 +436,6 @@
         ]
     },
     {
-        "name": "usmanhalalit/strana",
-        "version": "1.x-dev",
-        "version_normalized": "1.9999999.9999999.9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/usmanhalalit/strana.git",
-            "reference": "3e5e7aaa79e67d08539ba9c3cbb3d3d6e572c66e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/usmanhalalit/strana/zipball/3e5e7aaa79e67d08539ba9c3cbb3d3d6e572c66e",
-            "reference": "3e5e7aaa79e67d08539ba9c3cbb3d3d6e572c66e",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "doctrine/dbal": "2.3.4",
-            "illuminate/database": "4.1.*@dev",
-            "phpunit/phpunit": "3.7.*",
-            "usmanhalalit/pixie": "1.*@dev"
-        },
-        "time": "2013-11-13T18:38:22+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Strana": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Muhammad Usman",
-                "email": "hi@usman.it",
-                "role": "Developer"
-            }
-        ],
-        "description": "Pagination library for PHP, framework agnostic, with built-in adapters for Doctrine, Eloquent, Pixie and PHP Array.",
-        "homepage": "https://github.com/usmanhalalit/strana",
-        "keywords": [
-            "page",
-            "pagination",
-            "paginator"
-        ]
-    },
-    {
         "name": "monolog/monolog",
         "version": "1.0.2",
         "version_normalized": "1.0.2.0",
@@ -771,6 +651,126 @@
             "polyfill",
             "portable",
             "shim"
+        ]
+    },
+    {
+        "name": "doctrine/inflector",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/inflector.git",
+            "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
+            "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*"
+        },
+        "time": "2015-11-06T14:35:42+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Inflector\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "inflection",
+            "pluralize",
+            "singularize",
+            "string"
+        ]
+    },
+    {
+        "name": "usmanhalalit/strana",
+        "version": "1.x-dev",
+        "version_normalized": "1.9999999.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/usmanhalalit/strana.git",
+            "reference": "3e5e7aaa79e67d08539ba9c3cbb3d3d6e572c66e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/usmanhalalit/strana/zipball/3e5e7aaa79e67d08539ba9c3cbb3d3d6e572c66e",
+            "reference": "3e5e7aaa79e67d08539ba9c3cbb3d3d6e572c66e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "doctrine/dbal": "2.3.4",
+            "illuminate/database": "4.1.*@dev",
+            "phpunit/phpunit": "3.7.*",
+            "usmanhalalit/pixie": "1.*@dev"
+        },
+        "time": "2013-11-13T18:38:22+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Strana": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Muhammad Usman",
+                "email": "hi@usman.it",
+                "role": "Developer"
+            }
+        ],
+        "description": "Pagination library for PHP, framework agnostic, with built-in adapters for Doctrine, Eloquent, Pixie and PHP Array.",
+        "homepage": "https://github.com/usmanhalalit/strana",
+        "keywords": [
+            "page",
+            "pagination",
+            "paginator"
         ]
     }
 ]

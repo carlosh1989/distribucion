@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'Strana' => array($vendorDir . '/usmanhalalit/strana/src'),
     'Monolog' => array($vendorDir . '/monolog/monolog/src'),
+    'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
 );

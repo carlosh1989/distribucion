@@ -41,7 +41,6 @@ class ComposerStaticInitef694dd04c5e7b46638c440aee45f85e
         ),
         'D' => 
         array (
-            'Doctrine\\Common\\Inflector\\' => 26,
             'DB\\' => 3,
         ),
         'C' => 
@@ -91,10 +90,6 @@ class ComposerStaticInitef694dd04c5e7b46638c440aee45f85e
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
-        'Doctrine\\Common\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
-        ),
         'DB\\' => 
         array (
             0 => __DIR__ . '/../..' . '/db',
@@ -118,6 +113,13 @@ class ComposerStaticInitef694dd04c5e7b46638c440aee45f85e
             'Monolog' => 
             array (
                 0 => __DIR__ . '/..' . '/monolog/monolog/src',
+            ),
+        ),
+        'D' => 
+        array (
+            'Doctrine\\Common\\Inflector\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
         ),
     );
@@ -368,6 +370,7 @@ class ComposerStaticInitef694dd04c5e7b46638c440aee45f85e
         'Models\\Parroquia' => __DIR__ . '/../..' . '/db/models/Parroquia.php',
         'Models\\Poblacion' => __DIR__ . '/../..' . '/db/models/Poblacion.php',
         'Models\\Problematica' => __DIR__ . '/../..' . '/db/models/Problematica.php',
+        'Models\\Producto' => __DIR__ . '/../..' . '/db/models/Producto.php',
         'Models\\Rubro' => __DIR__ . '/../..' . '/db/models/Rubro.php',
         'Models\\Sector' => __DIR__ . '/../..' . '/db/models/Sector.php',
         'Models\\Sectorviejo' => __DIR__ . '/../..' . '/db/models/Sectorviejo.php',
