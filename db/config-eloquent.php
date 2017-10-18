@@ -9,9 +9,9 @@ class Eloquent {
 	    $capsule->addConnection([
 	     'driver' => 'mysql',
 	     'host' => 'localhost',
-	     'database' => 'cadip',
+	     'database' => 'CADIP2',
 	     'username' => 'root',
-	     'password' => '',
+	     'password' => 'Adm15.',
 	     'charset' => 'utf8',
 	     'collation' => 'utf8_unicode_ci',
 	     'prefix' => '',
