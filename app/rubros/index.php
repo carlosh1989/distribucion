@@ -78,12 +78,13 @@ $rubros = Rubro::where('eliminar',0)->get();
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">ACTUALIZAR RUBRO</h4>
+											<h4 class="modal-title">ACTUALIZAR RUBROSS</h4>
 										</div>
 										<div class="modal-body">
 											<form action="update.php" method="POST">
 												<div class="form-group">
 													<input type="text" class="form-control" placeholder="Tipo de Rubro" name='tipo' required="required" value="<?php echo $p->rubro ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+													<input type="hidden" name="id" value="<?php echo $p->id ?>">
 												</div>
 												
 											</div>
