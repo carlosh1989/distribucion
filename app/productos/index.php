@@ -115,7 +115,7 @@ window.console&&console.log(idcategoria);
 <div class="modal-content">
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	<h4 class="modal-title">AGREGAR PRODUCTO</h4>
+	<h4 class="modal-title"><b>AGREGAR PRODUCTO</b></h4>
 </div>
 <form action="store.php" method="POST">
 	<div class="modal-body">
@@ -143,16 +143,16 @@ window.console&&console.log(idcategoria);
 
 	<div class="form-group">
 		<select style="width:280px;height:34px">
-			<option value="">PRESENTACIÒN +</option>
-			<option value="1">Regulado</option>
-			<option value="2">No Regulado</option>
+			<option value="">PRESENTACION +</option>
+			<option value="1">1*12</option>
+			<option value="2"></option>
 		</select>
 	</div>
 
 	<div class="form-group">
 		<select style="width:280px;height:34px">
 			<option value="">PRESENTACION -</option>
-			<option value="1">Regulado</option>
+			<option value="1">1</option>
 			<option value="2">No Regulado</option>
 		</select>
 	</div>
