@@ -34,7 +34,7 @@ $rubros = Rubro::where('eliminar',0)->get();
 <script src="../../assets/js/beyond.js"></script>
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
-	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> RUBRO:</strong></span>
+	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> RUBROS:</strong></span>
 	<button class="btn btn-danger shiny" data-toggle="modal" data-target="#agregarRubro"><i class="fa fa-plus"></i> AGREGAR RUBROS</button>
 </div>
 <div class="widget-body bordered-left">
