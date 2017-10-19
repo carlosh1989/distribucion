@@ -7,8 +7,8 @@ new Eloquent();
 session_start();
 extract($_GET);
 extract($_POST);
-
-$categoria = Categoria::where('eliminar',0)->where('id',$id)->first();
+//$categoria = Categoria::where('eliminar',0)->where('id',$id)->first();
+$presentacion = Presentacion::where('eliminar',0)->where('')->first();
 ?>
 <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../assets/css/beyond.min.css">
@@ -27,7 +27,7 @@ $categoria = Categoria::where('eliminar',0)->where('id',$id)->first();
 		<thead>
 			<tr role="row">
 				<th width='20%'><i class="fa fa-file"></i> TIPO</th>
-				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
+				<th width='20%'>|<i class="fa fa-address-card" aria-hidden="true"></i>
 				CANTIDAD</th>
 				<th width='5%'><i class="fa fa-gear"></i> Opciones</th>
 			</tr>
