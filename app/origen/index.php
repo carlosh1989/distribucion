@@ -69,12 +69,12 @@ $origenes = Origen::where('eliminar',0)->get();
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">ACTUALIZAR RUBROSS</h4>
+											<h4 class="modal-title">ACTUALIZAR ORIGEN</h4>
 										</div>
 										<div class="modal-body">
 											<form action="update.php" method="POST">
 												<div class="form-group">
-													<input type="text" class="form-control" placeholder="Tipo de Rubro" name='tipo' required="required" value="<?php echo $p->origen ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+													<input type="text" class="form-control" placeholder="Tipo de Rubro" name='origen' required="required" value="<?php echo $p->origen ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
 													<input type="hidden" name="id" value="<?php echo $p->id ?>">
 												</div>
 												
@@ -115,21 +115,9 @@ $origenes = Origen::where('eliminar',0)->get();
 </div>
 <div class="modal-body">
 	<form action="store.php" method="POST">
-		<div class="form-group">
-			<select class="form-group" name="categoria" id="">
-				<option value="">Categorías</option>
-				<?php 
-				$categorias = Categoria::all();
-				?>
-
-				<?php foreach ($categorias as $key => $c): ?>
-					<option value="<?php echo $c->id ?>"><?php echo $c->categoria ?></option>
-				<?php endforeach ?>
-			</select>
-		</div>
 		
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Tipo de Rubro" name='tipo' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+			<input type="text" class="form-control" placeholder="ORIGEN" name='origen' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
 		</div>
 		
 	</div>

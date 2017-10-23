@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 19, 2017 at 01:08 PM
+-- Generation Time: Oct 23, 2017 at 08:22 AM
 -- Server version: 5.7.19-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -23,30 +23,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `distribucion_origen`
+-- Table structure for table `distribucion_productos`
 --
 
-CREATE TABLE `distribucion_origen` (
+CREATE TABLE `distribucion_productos` (
   `id` int(11) NOT NULL,
-  `origen` varchar(100) NOT NULL
+  `categoria_id` int(11) NOT NULL,
+  `rubro_id` int(11) NOT NULL,
+  `origen_id` int(11) NOT NULL,
+  `coste_id` int(11) NOT NULL,
+  `presentacion_id` int(11) NOT NULL,
+  `detalle` varchar(200) NOT NULL,
+  `eliminar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `distribucion_origen`
+-- Dumping data for table `distribucion_productos`
 --
 
-INSERT INTO `distribucion_origen` (`id`, `origen`) VALUES
-(1, 'MERCAL'),
-(2, 'DISBASA');
+INSERT INTO `distribucion_productos` (`id`, `categoria_id`, `rubro_id`, `origen_id`, `coste_id`, `presentacion_id`, `detalle`, `eliminar`) VALUES
+(1, 1, 10, 4, 3, 3, 'PDVAL REGULADO ARROZ de 1X24 BULTO 1 KILOGRAMO (Kg) ', 0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `distribucion_origen`
+-- Indexes for table `distribucion_productos`
 --
-ALTER TABLE `distribucion_origen`
+ALTER TABLE `distribucion_productos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -54,10 +59,10 @@ ALTER TABLE `distribucion_origen`
 --
 
 --
--- AUTO_INCREMENT for table `distribucion_origen`
+-- AUTO_INCREMENT for table `distribucion_productos`
 --
-ALTER TABLE `distribucion_origen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `distribucion_productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

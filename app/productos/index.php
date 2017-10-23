@@ -5,6 +5,8 @@ use DB\Eloquent;
 use Strana\Paginator;
 use Models\Categoria;
 use Models\Producto;
+use Models\Origen;
+use Models\Coste;
 use Models\Rubro;
 new Eloquent();
 session_start();
@@ -108,6 +110,20 @@ window.console&&console.log(idcategoria);
 })
 });
 </script>
+
+<script language="javascript">
+$(document).ready(function(){
+$("#rubros").change(function () {
+$("#rubros option:selected").each(function () {
+idrubro = $(this).val();
+$.post("../../select/presentaciones.php", { idrubro:idrubro }, function(data){
+$("#presentacion").html(data);
+});
+window.console&&console.log(idcategoria);
+});
+})
+});
+</script>
 <!-- Modal -->
 <div id="agregarRubro" class="modal fade" role="dialog">
 <div class="modal-dialog">
@@ -117,48 +133,45 @@ window.console&&console.log(idcategoria);
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
 	<h4 class="modal-title"><b>AGREGAR PRODUCTO</b></h4>
 </div>
+	<div class="modal-body">
 <form action="store.php" method="POST">
 	<div class="modal-body">
 		<div class="form-group">
+			<?php $origenes = Origen::where('eliminar',0)->get(); ?>
+			<select name="origen" id="origen" style="width:280px;height:34px">
+				<option value="">ORIGEN</option>
+			<optgroup label='-------'></optgroup>
+			<?php foreach ($origenes as $ori): ?>
+			<option value="<?php echo $ori->id ?>"><?php echo $ori->origen ?></option>
+			<?php endforeach ?>
+			</select>
+
+			<?php $costes = Coste::where('eliminar',0)->get(); ?>
+			<select name="coste" id="coste" style="width:280px;height:34px">
+				<option value="">COSTES</option>
+			<optgroup label='-------'></optgroup>
+			<?php foreach ($costes as $co): ?>
+			<option value="<?php echo $co->id ?>"><?php echo $co->coste ?></option>
+			<?php endforeach ?>
+			</select>
+
 			<?php $categorias = Categoria::all(); ?>
 			<select name="categoria" id="categoria" style="width:280px;height:34px">
-				<option value="">CATEGORIA</option>
+				<option value="">CATEGORIAS</option>
 			<optgroup label='-------'></optgroup>
-			<?php foreach ($categorias as $cat): ?>
-			<option value="<?php echo $cat->id ?>"><?php echo $cat->categoria ?></option>
+			<?php foreach ($categorias as $r): ?>
+			<option value="<?php echo $r->id ?>"><?php echo $r->categoria ?></option>
 			<?php endforeach ?>
 		</select>
 		<select
 			name="rubro" id="rubros" style="width:280px;height:34px">
 			<option value="">RUBRO</option>
 		</select>
-	</div>
-	<div class="form-group">
-		<select style="width:280px;height:34px">
-			<option value="">TIPO</option>
-			<option value="1">Regulado</option>
-			<option value="2">No Regulado</option>
+		<select
+			name="presentacion" id="presentacion" style="width:280px;height:34px">
+			<option value="">PRESENTACIÓN</option>
 		</select>
 	</div>
-	<div class="form-group">
-		<select style="width:280px;height:34px">
-			<option value="">PRESENTACION +</option>
-			<option value="1">1x12</option>
-			<option value="1">1x12</option>
-			<option value="2"></option>
-		</select>
-	</div>
-	<div class="form-group">
-		<select style="width:280px;height:34px">
-			<option value="">PRESENTACION -</option>
-			<option value="1">1</option>
-			<option value="2">No Regulado</option>
-		</select>
-	</div>
-	<div>
-		<input type="text" class="form-control" name='nombre' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
-	</div>
-	
 </div>
 <div class="modal-footer">
 	<button type="submit" class="btn btn-danger shiny"><i class="fa fa-save"></i> GUARDAR</button>
