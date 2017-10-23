@@ -27,6 +27,7 @@ $productos->origen_id = $origen;
 $productos->coste_id = $coste;
 $productos->presentacion_id = $presentacion;
 $productos->detalle = $detalle;
+$productos->cantidad = 0;
 $productos->eliminar = 0;
 $productos->save();
 

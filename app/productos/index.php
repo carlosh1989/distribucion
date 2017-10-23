@@ -45,16 +45,16 @@ $productos = Producto::where('eliminar',0)->get();
 			<?php foreach ($paginator as $key => $p): ?>
 			<tr>
 				<td width='20%' >
-					<?php echo $p->producto ?>
+					<?php echo $p->detalle ?>
 				</td>
 				<td width='10%' >
 					<?php echo $p->cantidad ?>
 				</td>
 				<td>
 					<div class="col-md-12">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<!-- Trigger the modal with a button -->
-							<button type="button" class="btn btn-info fa fa-pencil" data-toggle="modal" data-target="#editarProducto<?php echo $p->id ?>"></button>
+							<button type="button" class="btn btn-info fa fa-sort-amount-asc" data-toggle="modal" data-target="#editarProducto<?php echo $p->id ?>"></button>
 							<!-- Modal -->
 							<div id="editarProducto<?php echo $p->id ?>" class="modal fade" role="dialog">
 								<div class="modal-dialog">
@@ -62,14 +62,20 @@ $productos = Producto::where('eliminar',0)->get();
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">ACTUALIZAR PRODUCTO</h4>
+											<h4 class="modal-title">ACTUALIZAR CANTIDAD</h4>
 										</div>
 										<div class="modal-body">
 											<form action="update.php" method="POST">
 												<div class="form-group">
-													<input type="text" class="form-control" placeholder="Tipo de Producto" name='tipo' required="required" value="<?php echo $p->producto ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
+													<input type="hidden" name="id" value="<?php echo $p->id ?>">
+													<input type="number" class="form-control" placeholder="CANTIDAD" name='cantidad' required="required" value="<?php echo $p->cantindad ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();">
 												</div>
-												
+												<div class="form-group">
+													<select name="opcion" id="">
+														<option value="1">AGREGAR</option>
+														<option value="2">QUITAR</option>
+													</select>
+												</div>
 											</div>
 											<div class="modal-footer">
 												<button type="submit" class="btn btn-danger shiny"><i class="fa fa-save"></i> ACTUALIZAR</button>
@@ -80,7 +86,7 @@ $productos = Producto::where('eliminar',0)->get();
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<form action="delete.php" method="POST">
 								<input type="hidden" name="id" value="<?php echo $p->id ?>">
 								<button class="btn btn-danger fa fa-times" type="submit"></button>
@@ -110,7 +116,6 @@ window.console&&console.log(idcategoria);
 })
 });
 </script>
-
 <script language="javascript">
 $(document).ready(function(){
 $("#rubros").change(function () {
@@ -133,19 +138,18 @@ window.console&&console.log(idcategoria);
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
 	<h4 class="modal-title"><b>AGREGAR PRODUCTO</b></h4>
 </div>
-	<div class="modal-body">
-<form action="store.php" method="POST">
-	<div class="modal-body">
-		<div class="form-group">
-			<?php $origenes = Origen::where('eliminar',0)->get(); ?>
-			<select name="origen" id="origen" style="width:280px;height:34px">
-				<option value="">ORIGEN</option>
-			<optgroup label='-------'></optgroup>
-			<?php foreach ($origenes as $ori): ?>
-			<option value="<?php echo $ori->id ?>"><?php echo $ori->origen ?></option>
-			<?php endforeach ?>
+<div class="modal-body">
+	<form action="store.php" method="POST">
+		<div class="modal-body">
+			<div class="form-group">
+				<?php $origenes = Origen::where('eliminar',0)->get(); ?>
+				<select name="origen" id="origen" style="width:280px;height:34px">
+					<option value="">ORIGEN</option>
+				<optgroup label='-------'></optgroup>
+				<?php foreach ($origenes as $ori): ?>
+				<option value="<?php echo $ori->id ?>"><?php echo $ori->origen ?></option>
+				<?php endforeach ?>
 			</select>
-
 			<?php $costes = Coste::where('eliminar',0)->get(); ?>
 			<select name="coste" id="coste" style="width:280px;height:34px">
 				<option value="">COSTES</option>
@@ -153,29 +157,28 @@ window.console&&console.log(idcategoria);
 			<?php foreach ($costes as $co): ?>
 			<option value="<?php echo $co->id ?>"><?php echo $co->coste ?></option>
 			<?php endforeach ?>
-			</select>
-
-			<?php $categorias = Categoria::all(); ?>
-			<select name="categoria" id="categoria" style="width:280px;height:34px">
-				<option value="">CATEGORIAS</option>
-			<optgroup label='-------'></optgroup>
-			<?php foreach ($categorias as $r): ?>
-			<option value="<?php echo $r->id ?>"><?php echo $r->categoria ?></option>
-			<?php endforeach ?>
 		</select>
-		<select
-			name="rubro" id="rubros" style="width:280px;height:34px">
-			<option value="">RUBRO</option>
-		</select>
-		<select
-			name="presentacion" id="presentacion" style="width:280px;height:34px">
-			<option value="">PRESENTACIÓN</option>
-		</select>
-	</div>
+		<?php $categorias = Categoria::all(); ?>
+		<select name="categoria" id="categoria" style="width:280px;height:34px">
+			<option value="">CATEGORIAS</option>
+		<optgroup label='-------'></optgroup>
+		<?php foreach ($categorias as $r): ?>
+		<option value="<?php echo $r->id ?>"><?php echo $r->categoria ?></option>
+		<?php endforeach ?>
+	</select>
+	<select
+		name="rubro" id="rubros" style="width:280px;height:34px">
+		<option value="">RUBRO</option>
+	</select>
+	<select
+		name="presentacion" id="presentacion" style="width:280px;height:34px">
+		<option value="">PRESENTACIÓN</option>
+	</select>
+</div>
 </div>
 <div class="modal-footer">
-	<button type="submit" class="btn btn-danger shiny"><i class="fa fa-save"></i> GUARDAR</button>
-	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+<button type="submit" class="btn btn-danger shiny"><i class="fa fa-save"></i> GUARDAR</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 </div>
 </form>
 </div>
