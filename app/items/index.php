@@ -14,7 +14,7 @@ new Eloquent();
 session_start();
 extract($_GET);
 extract($_POST);
-$items = Item::where('eliminar',0)->get();
+$combo = Combo::where('eliminar',0)->where('id',$idcombo)->first();
 ?>
 <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../assets/css/beyond.min.css">
@@ -25,7 +25,7 @@ $items = Item::where('eliminar',0)->get();
 <script src="../../assets/js/beyond.js"></script>
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
-	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> ITEMS:</strong></span>
+	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> ITEMS DE COMBO <a class="btn btn-danger shiny" href="../combos/show.php?idcombo=<?php echo $combo->id ?>"><?php echo $combo->cod ?></a></strong></span>
 	<a class="btn btn-danger shiny" data-toggle="modal" data-target="#agregarRubro"><i class="fa fa-plus"></i> AGREGAR ITEM</a>
 </div>
 <div class="widget-body bordered-left">
@@ -43,7 +43,7 @@ $items = Item::where('eliminar',0)->get();
 		<tbody>
 			<?php
 			$strana = new Paginator();
-			$records = array_reduce((array) $items, 'array_merge', array());
+			$records = array_reduce((array) $combo->items, 'array_merge', array());
 			$paginator = $strana->perPage(4)->make($records);
 			?>
 			<?php foreach ($paginator as $key => $p): ?>
@@ -61,7 +61,7 @@ $items = Item::where('eliminar',0)->get();
 					<div class="col-md-12">
 						<div class="col-md-6">
 							<!-- Trigger the modal with a button -->
-							<button type="button" class="btn btn-info fa fa-pencil" data-toggle="modal" data-target="#editarRubro<?php echo $p->id ?>"></button>
+							<button type="button" class="btn btn-info fa fa-sort-amount-asc" data-toggle="modal" data-target="#editarRubro<?php echo $p->id ?>"></button>
 							<!-- Modal -->
 							<div id="editarRubro<?php echo $p->id ?>" class="modal fade" role="dialog">
 								<div class="modal-dialog">
@@ -72,7 +72,7 @@ $items = Item::where('eliminar',0)->get();
 											<h4 class="modal-title">ACTUALIZAR CANTIDAD</h4>
 										</div>
 										<div class="modal-body">
-											<form action="update.php" method="POST">
+											<form action="update.php?idcombo=<?php echo $combo->id ?>" method="POST">
 												<div class="form-group">
 													<input type="number" class="form-control" placeholder="CANTIDAD" name='cantidad' required="required" value="<?php echo $p->cantidad ?>" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
 													<input type="hidden" name="id" value="<?php echo $p->id ?>">
@@ -143,29 +143,29 @@ $("#productos").html(data);
 	<form action="store.php" method="POST">
 		<div class="modal-body">
 			<div class="form-group">
-		<?php $categorias = Categoria::all(); ?>
-		<select name="categoria" id="categoria" style="width:280px;height:34px">
-			<option value="">CATEGORIAS</option>
-		<optgroup label='-------'></optgroup>
-		<?php foreach ($categorias as $r): ?>
-		<option value="<?php echo $r->id ?>"><?php echo $r->categoria ?></option>
-		<?php endforeach ?>
-	</select>
-	<select
-		name="rubro" id="rubros" style="width:280px;height:34px">
-		<option value="">RUBRO</option>
-	</select>
-	<select
-		name="producto" id="productos" style="width:280px;height:34px">
-		<option value="">PRODUCTOS</option>
-	</select>
-	<input type="number" name="cantidad" placeholder="CANTIDAD" style="width:280px;height:34px">
-</div>
-</div>
-<div class="modal-footer">
-<button type="submit" class="btn btn-danger shiny"><i class="fa fa-save"></i> GUARDAR</button>
-<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-</div>
+				<?php $categorias = Categoria::all(); ?>
+				<select name="categoria" id="categoria" style="width:280px;height:34px">
+					<option value="">CATEGORIAS</option>
+				<optgroup label='-------'></optgroup>
+				<?php foreach ($categorias as $r): ?>
+				<option value="<?php echo $r->id ?>"><?php echo $r->categoria ?></option>
+				<?php endforeach ?>
+			</select>
+			<select
+				name="rubro" id="rubros" style="width:280px;height:34px">
+				<option value="">RUBRO</option>
+			</select>
+			<select
+				name="producto" id="productos" style="width:280px;height:34px">
+				<option value="">PRODUCTOS</option>
+			</select>
+			<input type="number" name="cantidad" placeholder="CANTIDAD" style="width:280px;height:34px">
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-danger shiny"><i class="fa fa-save"></i> GUARDAR</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	</div>
 </form>
 </div>
 </div>
