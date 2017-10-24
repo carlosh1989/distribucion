@@ -357,6 +357,7 @@ class ComposerStaticInitef694dd04c5e7b46638c440aee45f85e
         'Models\\ClapsBodegaComparacion' => __DIR__ . '/../..' . '/db/models/ClapsBodegaComparacion.php',
         'Models\\Clp' => __DIR__ . '/../..' . '/db/models/Clp.php',
         'Models\\ClpResponsable' => __DIR__ . '/../..' . '/db/models/ClpResponsable.php',
+        'Models\\Combo' => __DIR__ . '/../..' . '/db/models/Combos.php',
         'Models\\Comunidad' => __DIR__ . '/../..' . '/db/models/Comunidad.php',
         'Models\\Consulta' => __DIR__ . '/../..' . '/db/models/Consulta.php',
         'Models\\ConsultaContacto' => __DIR__ . '/../..' . '/db/models/ConsultaContacto.php',

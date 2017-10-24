@@ -238,6 +238,7 @@ return array(
     'Models\\ClapsBodegaComparacion' => $baseDir . '/db/models/ClapsBodegaComparacion.php',
     'Models\\Clp' => $baseDir . '/db/models/Clp.php',
     'Models\\ClpResponsable' => $baseDir . '/db/models/ClpResponsable.php',
+    'Models\\Combo' => $baseDir . '/db/models/Combos.php',
     'Models\\Comunidad' => $baseDir . '/db/models/Comunidad.php',
     'Models\\Consulta' => $baseDir . '/db/models/Consulta.php',
     'Models\\ConsultaContacto' => $baseDir . '/db/models/ConsultaContacto.php',

@@ -2,13 +2,28 @@
 require_once '../../vendor/autoload.php';
 ini_set('display_errors', 1);
 use DB\Eloquent;
-use Models\Combo;
+use Models\Bodega;
+use Models\Cargo;
+use Models\Clap;
+use Models\Clp;
+use Models\ClpResponsable;
+use Models\Consulta;
+use Models\ConsultaContacto;
+use Models\Familia;
+use Models\Integrante;
+use Models\Jefe;
+use Models\Municipio;
+use Models\Organismo;
+use Models\Parroquia;
+use Models\Problematica;
 use Strana\Paginator;
+use Models\Rubro;
+use Models\Categoria;
 new Eloquent();
 session_start();
 extract($_GET);
 extract($_POST);
-$rubros = Combo::where('eliminar',0)->get();
+$rubros = Rubro::where('eliminar',0)->get();
 ?>
 <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../assets/css/beyond.min.css">
@@ -19,19 +34,19 @@ $rubros = Combo::where('eliminar',0)->get();
 <script src="../../assets/js/beyond.js"></script>
 <br>
 <div class="widget-header bordered-left bordered-darkorange">
-	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> COMBOS:</strong></span>
-	<a class="btn btn-danger shiny" data-toggle="modal" data-target="#agregarRubro"><i class="fa fa-plus"></i> AGREGAR COMBOS</a>
+	<span class="widget-caption"><a class="btn btn-danger shiny fa fa-home" href="../"></a><strong> RUBROS:</strong></span>
+	<button class="btn btn-danger shiny" data-toggle="modal" data-target="#agregarRubro"><i class="fa fa-plus"></i> AGREGAR RUBROS</button>
 </div>
 <div class="widget-body bordered-left">
 	<table class="table  table-hover table-bordered" id="simpledatatable" style="font-size: 1em;color: #555;">
 		<thead>
 			<tr role="row">
-				<th width='5%'><i class="fa fa-file"></i> COD</th>
-				<th width='30%'><i class="fa fa-address-card" aria-hidden="true"></i>
-				DETALLE</th>
-				<th width='10%'><i class="fa fa-address-card" aria-hidden="true"></i>
-				KILOS</th>
-				<th width='10%'><i class="fa fa-gear"></i> OPCIONES</th>
+				<th width='20%'><i class="fa fa-file"></i> TIPO</th>
+				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
+				CATEGORÍA</th>
+				<th width='20%'><i class="fa fa-address-card" aria-hidden="true"></i>
+				CANTIDAD</th>
+				<th width='5%'><i class="fa fa-gear"></i> OPCIONES</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,19 +58,19 @@ $rubros = Combo::where('eliminar',0)->get();
 			<?php foreach ($paginator as $key => $p): ?>
 			<tr>
 				<td width='20%' >
-					<?php echo $p->cod ?>
+					<?php echo $p->rubro ?>
 				</td>
 				<td width='10%' >
-					<?php echo $p->detalle ?>
+					<?php echo $p->categoria->categoria ?>
 				</td>
 				<td width='10%' >
-					<?php echo $p->kilos ?>
+					<?php echo $p->cantidad ?>
 				</td>
 				<td>
 					<div class="col-md-12">
 						<div class="col-md-6">
 							<!-- Trigger the modal with a button -->
-							<a type="button" class="btn btn-info fa fa-shopping-basket" href="../items/index.php?idcombo=<?php echo $p->id ?>"> ITEMS</a>
+							<button type="button" class="btn btn-info fa fa-pencil" data-toggle="modal" data-target="#editarRubro<?php echo $p->id ?>"></button>
 							<!-- Modal -->
 							<div id="editarRubro<?php echo $p->id ?>" class="modal fade" role="dialog">
 								<div class="modal-dialog">
@@ -63,7 +78,7 @@ $rubros = Combo::where('eliminar',0)->get();
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title">ACTUALIZAR COMBOS</h4>
+											<h4 class="modal-title">ACTUALIZAR RUBROSS</h4>
 										</div>
 										<div class="modal-body">
 											<form action="update.php" method="POST">
@@ -105,21 +120,25 @@ $rubros = Combo::where('eliminar',0)->get();
 <div class="modal-content">
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	<h4 class="modal-title">AGREGAR COMBO</h4>
+	<h4 class="modal-title">AGREGAR RUBRO</h4>
 </div>
 <div class="modal-body">
 	<form action="store.php" method="POST">
-		<?php $cod = substr(md5(uniqid(mt_rand(), true)) , 0, 8); ?>
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="COD" name='cod' value="<?php echo $cod ?>" required="required" autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:150px;height:34px">
-		</div>
+			<select class="form-group" name="categoria" id="">
+				<option value="">Categorías</option>
+				<?php 
+				$categorias = Categoria::all();
+				?>
 
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="DETALLE" name='detalle' required="required" autofocus onChange="javascript:this.value=this.value.toUpperCase();">
+				<?php foreach ($categorias as $key => $c): ?>
+					<option value="<?php echo $c->id ?>"><?php echo $c->categoria ?></option>
+				<?php endforeach ?>
+			</select>
 		</div>
-
+		
 		<div class="form-group">
-			<input type="number" class="form-control" placeholder="KILOS" name='kilos' required="required" autofocus style="width:150px;height:34px">
+			<input type="text" class="form-control" placeholder="Tipo de Rubro" name='tipo' required="required" required autofocus onChange="javascript:this.value=this.value.toUpperCase();" style="width:280px;height:34px">
 		</div>
 		
 	</div>
